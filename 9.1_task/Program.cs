@@ -66,9 +66,9 @@ namespace _9._1_task
                     {
                         Console.WriteLine("Ваш результат = {0}", X / Y);
                     }
-                    catch (Exception ex)
+                    catch (DivideByZeroException)
                     {
-                        Console.WriteLine(ex.Message);
+                        Console.WriteLine("Ошибка! Деление на нуль!");
                     }
                 }
                 else
