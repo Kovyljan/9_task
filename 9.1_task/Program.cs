@@ -8,7 +8,7 @@ namespace _9._1_task
         {
             bool b = true;
             Console.WriteLine("Вас приветствует калькулятор!");
-            int X = 0, Y = 0, operation_code = 0, operation = 0;
+            int X = 0, Y = 0, operation_code = 0;
             
             try
             {
@@ -39,10 +39,7 @@ namespace _9._1_task
                 if (b == true)
                 {
                     Console.WriteLine("Введите код операции:");
-                    Console.WriteLine("     1 - Сложение");
-                    Console.WriteLine("     2 - вычитание");
-                    Console.WriteLine("     3 - произведение");
-                    Console.WriteLine("     4 - частное");
+                    Console.WriteLine("     1 - Сложение\n     2 - вычитание\n     3 - произведение\n     4 - частное");                    
                     Console.Write("Ваш выбор: ");
                     int oper_code = Convert.ToInt32(Console.ReadLine());
                     operation_code = oper_code;
@@ -52,24 +49,27 @@ namespace _9._1_task
             if (b == true)
 
                 if (operation_code == 1)
-                {
-                    operation = X + Y;
-                Console.WriteLine("Ваш результат = {0}", operation);
+                {                
+                Console.WriteLine("Ваш результат = {0}", X + Y);
                 }
                 else if(operation_code == 2)
-                {
-                    operation = X - Y;
-                Console.WriteLine("Ваш результат = {0}", operation);
+                {                 
+                Console.WriteLine("Ваш результат = {0}", X - Y);
                 }
                 else if (operation_code == 3)
-                {
-                    operation = X * Y;
-                Console.WriteLine("Ваш результат = {0}", operation);
+                {                    
+                Console.WriteLine("Ваш результат = {0}", X * Y);
                 }
                 else if (operation_code == 4)
                 {
-                    operation = X / Y;
-                Console.WriteLine("Ваш результат = {0}", operation);
+                    try
+                    {
+                        Console.WriteLine("Ваш результат = {0}", X/Y);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }                
                 }
                 else
                 {
