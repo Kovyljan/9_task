@@ -49,7 +49,8 @@ namespace _9._1_task
                 }
 
             }
-                        
+            if (b == true)
+
                 if (operation_code == 1)
                 {
                     operation = X + Y;
