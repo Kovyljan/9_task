@@ -1,70 +1,71 @@
-﻿using System;
+using System;
 
 namespace _9._1_task
 {
     class Program
     {
+        private static int _x = 0;
+        private static int _y = 0;
+        private static int _operation_code = 0;
+        private static bool _b = true;
+
         static void Main(string[] args)
         {
-            bool b = true;
             Console.WriteLine("Вас приветствует калькулятор!");
-            int X = 0, Y = 0, operation_code = 0;
 
             try
             {
                 Console.Write("Введите целое число. X=");
-                int x = Convert.ToInt32(Console.ReadLine());
-                X = x;
+                _x = Convert.ToInt32(Console.ReadLine());
             }
             catch
             {
                 Console.WriteLine("Ошибка! Входная строка на число X имеет не верный формат.");
-                b = false;
+                _b = false;
             }
 
-            if (b == true)
+            if (_b == true)
             {
                 try
                 {
                     Console.Write("Введите целое число. Y=");
-                    int y = Convert.ToInt32(Console.ReadLine());
-                    Y = y;
+                    _y = Convert.ToInt32(Console.ReadLine());
                 }
                 catch
                 {
                     Console.WriteLine("Ошибка! Входная строка на число Y имеет не верный формат.");
-                    b = false;
+                    _b = false;
                 }
 
-                if (b == true)
+                if (_b == true)
                 {
                     Console.WriteLine("Введите код операции:");
                     Console.WriteLine("     1 - Сложение\n     2 - вычитание\n     3 - произведение\n     4 - частное");
                     Console.Write("Ваш выбор: ");
-                    int oper_code = Convert.ToInt32(Console.ReadLine());
-                    operation_code = oper_code;
+
+                    _operation_code = Convert.ToInt32(Console.ReadLine());
+                }
                 }
 
-            }
-            if (b == true)
+            if (_b == true)
 
-                if (operation_code == 1)
+                if (_operation_code == 1)
                 {
-                    Console.WriteLine("Ваш результат = {0}", X + Y);
+                    Console.WriteLine("Ваш результат = {0}", _x + _y);
                 }
-                else if (operation_code == 2)
+                else if (_operation_code == 2)
                 {
-                    Console.WriteLine("Ваш результат = {0}", X - Y);
+                    Console.WriteLine("Ваш результат = {0}", _x - _y);
                 }
-                else if (operation_code == 3)
+                else if (_operation_code == 3)
                 {
-                    Console.WriteLine("Ваш результат = {0}", X * Y);
+                    Console.WriteLine("Ваш результат = {0}", _x * _y);
                 }
-                else if (operation_code == 4)
+                else if (_operation_code == 4)
                 {
                     try
                     {
-                        Console.WriteLine("Ваш результат = {0}", X / Y);
+                        Console.WriteLine("Ваш результат = {0}", _x / _y);
                     }
                     catch (DivideByZeroException)
                     {
