@@ -4,21 +4,17 @@ namespace _9._1_task
 {
     class Program
     {
-        private static int _x = 0;
-        private static int _y = 0;
-        private static int _operation_code = 0;
-
         static void Main(string[] args)
         {
             Console.WriteLine("Вас приветствует калькулятор!");
 
             try
             {
-                _x = GetIntegerFromUserInput("X");
-                _y = GetIntegerFromUserInput("Y");
-                _operation_code = GetOperationCodeFromUserInput();
+                int x = GetIntegerFromUserInput("X");
+                int y = GetIntegerFromUserInput("Y");
+                int operationCode = GetOperationCodeFromUserInput();
 
-                var result = Calculate();
+                int result = Calculate(x, y, operationCode);
                 Console.WriteLine($"Ваш результат = {result}");
             }
             catch (Exception e)
@@ -77,28 +73,28 @@ namespace _9._1_task
             return operationCode;
         }
 
-        private static int Calculate()
+        private static int Calculate(int x, int y, int operationCode)
         {
-            if (_operation_code == 1)
+            if (operationCode == 1)
             {
-                return _x + _y;
+                return x + y;
             }
 
-            if (_operation_code == 2)
+            if (operationCode == 2)
             {
-                return _x - _y;
+                return x - y;
             }
 
-            if (_operation_code == 3)
+            if (operationCode == 3)
             {
-                return _x * _y;
+                return x * y;
             }
 
-            if (_operation_code == 4)
+            if (operationCode == 4)
             {
                 try
                 {
-                    return _x / _y;
+                    return x / y;
                 }
                 catch (DivideByZeroException)
                 {
