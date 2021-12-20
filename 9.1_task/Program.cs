@@ -20,7 +20,6 @@ namespace _9._1_task
             catch (Exception e)
             {
                 Console.WriteLine(e.Message);
-                return;
             }
 
             Console.ReadKey();
