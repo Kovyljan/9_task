@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace _9._1_task
 {
@@ -17,6 +17,7 @@ namespace _9._1_task
             {
                 _x = GetIntegerFromUserInput("X");
                 _y = GetIntegerFromUserInput("Y");
+                _operation_code = GetOperationCodeFromUserInput();
             }
             catch (Exception e)
             {
@@ -24,6 +25,26 @@ namespace _9._1_task
                 return;
             }
 
+
+        private static int GetIntegerFromUserInput(string variableName)
+        {
+            try
+            {
+                Console.Write($"Введите целое число. {variableName}=");
+                return Convert.ToInt32(Console.ReadLine());
+            }
+            catch(FormatException)
+            {
+                throw new Exception($"Ошибка! Входная строка на число {variableName} имеет не верный формат.");
+            }
+            catch (OverflowException)
+            {
+                throw new Exception($"Ошибка! Входная строка на число {variableName} больше MaxValue или меньше MinValue.");
+            }
+        }
+
+        private static int GetOperationCodeFromUserInput()
+        {
             Console.WriteLine("Введите код операции:");
             Console.WriteLine(
                 "\t1 - Сложение\n" +
@@ -33,21 +54,23 @@ namespace _9._1_task
             );
             Console.Write("Ваш выбор: ");
 
-            _operation_code = Convert.ToInt32(Console.ReadLine());
+            int operationCode;
 
-            if (_b == true)
+            try
             {
-                if (_operation_code == 1)
+                operationCode = Convert.ToInt32(Console.ReadLine());
+            }
+            catch(FormatException)
                 {
-                    Console.WriteLine($"Ваш результат = {_x + _y}");
+                throw new Exception("Код операции должен быть целым числом, а не строкой.");
                 }
-                else if (_operation_code == 2)
+
+            if (operationCode < 1 || operationCode > 4)
                 {
-                    Console.WriteLine($"Ваш результат = {_x - _y}");
+                throw new Exception("Нет операции с указанным номером");
                 }
-                else if (_operation_code == 3)
-                {
-                    Console.WriteLine($"Ваш результат = {_x * _y}");
+
+            return operationCode;
                 }
                 else if (_operation_code == 4)
                 {
