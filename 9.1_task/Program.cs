@@ -7,7 +7,6 @@ namespace _9._1_task
         private static int _x = 0;
         private static int _y = 0;
         private static int _operation_code = 0;
-        private static bool _b = true;
 
         static void Main(string[] args)
         {
