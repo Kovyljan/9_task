@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace _9._1_task
 {
@@ -40,32 +40,37 @@ namespace _9._1_task
                 if (_b == true)
                 {
                     Console.WriteLine("Введите код операции:");
-                    Console.WriteLine("     1 - Сложение\n     2 - вычитание\n     3 - произведение\n     4 - частное");
+                    Console.WriteLine(
+                        "\t1 - Сложение\n" +
+                        "\t2 - вычитание\n" +
+                        "\t3 - произведение\n" +
+                        "\t4 - частное"
+                    );
                     Console.Write("Ваш выбор: ");
 
                     _operation_code = Convert.ToInt32(Console.ReadLine());
                 }
-                }
+            }
 
             if (_b == true)
-
+            {
                 if (_operation_code == 1)
                 {
-                    Console.WriteLine("Ваш результат = {0}", _x + _y);
+                    Console.WriteLine($"Ваш результат = {_x + _y}");
                 }
                 else if (_operation_code == 2)
                 {
-                    Console.WriteLine("Ваш результат = {0}", _x - _y);
+                    Console.WriteLine($"Ваш результат = {_x - _y}");
                 }
                 else if (_operation_code == 3)
                 {
-                    Console.WriteLine("Ваш результат = {0}", _x * _y);
+                    Console.WriteLine($"Ваш результат = {_x * _y}");
                 }
                 else if (_operation_code == 4)
                 {
                     try
                     {
-                        Console.WriteLine("Ваш результат = {0}", _x / _y);
+                        Console.WriteLine($"Ваш результат = {_x / _y}");
                     }
                     catch (DivideByZeroException)
                     {
@@ -76,6 +81,7 @@ namespace _9._1_task
                 {
                     Console.WriteLine("Нет операции с указанным номером");
                 }
+            }
 
             Console.ReadKey();
         }
