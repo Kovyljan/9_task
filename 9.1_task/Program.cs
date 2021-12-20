@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 
 namespace _9._1_task
 {
@@ -18,6 +18,9 @@ namespace _9._1_task
                 _x = GetIntegerFromUserInput("X");
                 _y = GetIntegerFromUserInput("Y");
                 _operation_code = GetOperationCodeFromUserInput();
+
+                var result = Calculate();
+                Console.WriteLine($"Ваш результат = {result}");
             }
             catch (Exception e)
             {
@@ -25,6 +28,8 @@ namespace _9._1_task
                 return;
             }
 
+            Console.ReadKey();
+        }
 
         private static int GetIntegerFromUserInput(string variableName)
         {
@@ -61,52 +66,48 @@ namespace _9._1_task
                 operationCode = Convert.ToInt32(Console.ReadLine());
             }
             catch(FormatException)
-                {
+            {
                 throw new Exception("Код операции должен быть целым числом, а не строкой.");
-                }
+            }
 
             if (operationCode < 1 || operationCode > 4)
-                {
+            {
                 throw new Exception("Нет операции с указанным номером");
-                }
+            }
 
             return operationCode;
-                }
-                else if (_operation_code == 4)
-                {
-                    try
-                    {
-                        Console.WriteLine($"Ваш результат = {_x / _y}");
-                    }
-                    catch (DivideByZeroException)
-                    {
-                        Console.WriteLine("Ошибка! Деление на нуль!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Нет операции с указанным номером");
-                }
-            }
-
-            Console.ReadKey();
         }
 
-        private static int GetIntegerFromUserInput(string variableName)
+        private static int Calculate()
         {
-            try
+            if (_operation_code == 1)
             {
-                Console.Write($"Введите целое число. {variableName}=");
-                return Convert.ToInt32(Console.ReadLine());
+                return _x + _y;
             }
-            catch(FormatException)
+
+            if (_operation_code == 2)
             {
-                throw new Exception($"Ошибка! Входная строка на число {variableName} имеет не верный формат.");
+                return _x - _y;
             }
-            catch (OverflowException)
+
+            if (_operation_code == 3)
             {
-                throw new Exception($"Ошибка! Входная строка на число {variableName} больше MaxValue или меньше MinValue.");
+                return _x * _y;
             }
+
+            if (_operation_code == 4)
+            {
+                try
+                {
+                    return _x / _y;
+                }
+                catch (DivideByZeroException)
+                {
+                    throw new Exception("Ошибка! Деление на нуль!");
+                }
+            }
+
+            throw new Exception("Нет операции с указанным номером");
         }
     }
 }
