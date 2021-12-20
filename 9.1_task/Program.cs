@@ -15,42 +15,25 @@ namespace _9._1_task
 
             try
             {
-                Console.Write("Введите целое число. X=");
-                _x = Convert.ToInt32(Console.ReadLine());
+                _x = GetIntegerFromUserInput("X");
+                _y = GetIntegerFromUserInput("Y");
             }
-            catch
+            catch (Exception e)
             {
-                Console.WriteLine("Ошибка! Входная строка на число X имеет не верный формат.");
-                _b = false;
+                Console.WriteLine(e.Message);
+                return;
             }
 
-            if (_b == true)
-            {
-                try
-                {
-                    Console.Write("Введите целое число. Y=");
-                    _y = Convert.ToInt32(Console.ReadLine());
-                }
-                catch
-                {
-                    Console.WriteLine("Ошибка! Входная строка на число Y имеет не верный формат.");
-                    _b = false;
-                }
+            Console.WriteLine("Введите код операции:");
+            Console.WriteLine(
+                "\t1 - Сложение\n" +
+                "\t2 - вычитание\n" +
+                "\t3 - произведение\n" +
+                "\t4 - частное"
+            );
+            Console.Write("Ваш выбор: ");
 
-                if (_b == true)
-                {
-                    Console.WriteLine("Введите код операции:");
-                    Console.WriteLine(
-                        "\t1 - Сложение\n" +
-                        "\t2 - вычитание\n" +
-                        "\t3 - произведение\n" +
-                        "\t4 - частное"
-                    );
-                    Console.Write("Ваш выбор: ");
-
-                    _operation_code = Convert.ToInt32(Console.ReadLine());
-                }
-            }
+            _operation_code = Convert.ToInt32(Console.ReadLine());
 
             if (_b == true)
             {
@@ -84,6 +67,23 @@ namespace _9._1_task
             }
 
             Console.ReadKey();
+        }
+
+        private static int GetIntegerFromUserInput(string variableName)
+        {
+            try
+            {
+                Console.Write($"Введите целое число. {variableName}=");
+                return Convert.ToInt32(Console.ReadLine());
+            }
+            catch(FormatException)
+            {
+                throw new Exception($"Ошибка! Входная строка на число {variableName} имеет не верный формат.");
+            }
+            catch (OverflowException)
+            {
+                throw new Exception($"Ошибка! Входная строка на число {variableName} больше MaxValue или меньше MinValue.");
+            }
         }
     }
 }
